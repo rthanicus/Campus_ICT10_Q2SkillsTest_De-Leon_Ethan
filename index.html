@@ -1,187 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Know your non-metal elements NOW </title>
+
+    <title>Non-Metal Elements</title>
+
+    <!-- PyScript connection -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
 
     <style>
-        {
+        * {
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
-
         }
 
         body {
             margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #253cff, #7135ff);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            padding: 4px;
+            font-family: Arial, sans-serif;
+            background: white;
         }
 
-        .container {
-            width: 100%;
-            max-width: 550px;
-            background: white;
-            border-radius: 5px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0,.2);
+        .main-container {
+            max-width: 535px;
+            margin: auto;
+            padding: 7px 18px 10px;
+            background: linear-gradient(120deg, #1765ff, #5030ec);
+        }
 
+        .content {
+            background: white;
+            border-radius: 12px 12px 0 0;
+            overflow: hidden;
         }
 
         .header {
-            background:#1268f5;
+            background: #1473f9;
             color: white;
             text-align: center;
-            padding: 15px;
-
+            padding: 12px;
         }
 
         .header h2 {
             margin: 0;
-            font-size: 23px;
-
+            font-size: 17px;
         }
 
         .header p {
             margin: 4px 0 0;
-            font-size: 11px;
-
+            font-size: 10px;
         }
 
-        .content p {
-            padding: 15px;
-
-        }
-
-        .content {
-            padding: 15px;
+        .form-content {
+            padding: 12px 16px;
         }
 
         .instructions {
-            background: #d0f4fa;
-            padding: 12px;
+            background: #d0f5fb;
+            color: #17657a;
+            padding: 10px 12px;
             border-radius: 5px;
-            font-size: 12px;
-            color: #24566a;
-            margin-bottom: 15px;
+            font-size: 10px;
+            margin-bottom: 10px;
+        }
+
+        .instructions strong {
+            display: block;
+            margin-bottom: 3px;
         }
 
         label {
             display: block;
-            font-size: 13px;
+            font-size: 11px;
             font-weight: bold;
-            margin-bottom: 7px;
-
+            margin-bottom: 5px;
         }
 
         input {
             width: 100%;
-            padding: 10px;
+            padding: 11px;
             border: 1px solid #ddd;
             border-radius: 5px;
             outline: none;
-            font-size: 14px;
+            font-size: 13px;
+            margin-bottom: 8px;
         }
 
         input:focus {
-            border-color: #1268f5
+            border-color: #1473f9;
         }
 
         button {
             width: 100%;
-            margin-top: 10px;
-            padding: 11px;
-            background: #168c58;
-            color: white;
+            background: #198754;
             border: none;
+            color: white;
+            padding: 12px;
             border-radius: 5px;
-            font-weight: bold;
+            font-size: 12px;
             cursor: pointer;
-            transition: 0.2s;
         }
 
         button:hover {
-            background: #107357;
-        }
-
-        button:disabled {
-            opacity: 0.0;
-            cursor: wait;
-        }
-
-        .divider {
-            border: none;
-            border-top: 1px solid #ddd;
-            margin: 12px 0;
+            background: #146c43;
         }
 
         .result-title {
-            color: #1268f5;
-            font-size: 14px;
+            color: #1473f9;
+            font-size: 12px;
             font-weight: bold;
-            margin-bottom: 8px;
+            margin: 12px 0 5px;
         }
 
         .result-box {
-            bakcground: #f5f6f8;
-            border-left: 4px solid #1268f5;
+            background: #f5f6f7;
+            border-left: 4px solid #1473f9;
             border-radius: 4px;
-            padding: 12px;
-            font-size: 13px;
-            line-height: 1.7;
-            min-height: 75px;
-        }
-
-        .result-box strong {
-            color: #222;
-        }
-
-        .success {
-            border-left-color: #168c58;
-        }
-
-        .error {
-            border-left-color: #e53935;
-            color: #d32f2f;
+            padding: 10px;
+            font-size: 11px;
+            line-height: 16px;
+            color: #333;
+            min-height: 65px;
         }
 
         .footer {
             text-align: center;
-            background: #fafafa;
-            padding: 10px;
-            color: #999;
-            font-size: 10px;
-            border-top: 1px solid #eee;
-        }
-
-        .hidden {
-            display: none;
+            padding: 12px;
+            font-size: 9px;
+            color: #8491a0;
+            background: #f8f9fa;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
-        <div class="header">
-            <h2>Non-Metal Elements</h2>
-            <p>Periodic Table Information Finder</p>
+    <div class="main-container">
+
+        <div class="content">
+
+            <div class="header">
+                <h2>Non-Metal Elements</h2>
+                <p>Periodic Table Information Finder</p>
+            </div>
+
+            <div class="form-content">
+
+                <div class="instructions">
+                    <strong>Instructions:</strong>
+                    Enter the <b>symbol</b> of a non-metal element
+                    (Example: H, O, Cl, Ne, Xe).
+                </div>
+
+                <label for="element_input">
+                    ⚲ Element Symbol
+                </label>
+
+                <input type="text" id="element_input" placeholder="Enter element symbol" maxlength="3"
+                    autocomplete="off">
+
+                <!-- CONNECTS TO PYTHON FUNCTION -->
+                <button py-click="search_element">
+                    Check Details
+                </button>
+
+                <hr style="border:0; border-top:1px solid #ddd; margin-top:10px;">
+
+                <div class="result-title">
+                    ▤ Result
+                </div>
+
+                <!-- PYTHON WILL DISPLAY RESULTS HERE -->
+                <div class="result-box" id="result">
+                    Enter an element symbol to see its details.
+                </div>
+
+            </div>
+
+            <div class="footer">
+                🟡 Skills Test • 2nd Quarter • ICT
+            </div>
+
         </div>
 
     </div>
 
-    <div class="content">
+    <!-- LOAD YOUR EXISTING PYTHON FILE -->
+    <script type="py" src="main.py"></script>
 
-        <div class="instrictions">
-            <strong>Instructions:</strong><br>
-            Enter the <b>symbol</b> of a non-metal elements
-            (Example: H, O, Cl, Ne, Xe)
-        </div>
-
-    </div>
 </body>
+
 </html>
